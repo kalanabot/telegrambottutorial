@@ -10,13 +10,13 @@ from PIL import Image  # pip install Pillow
 import requests  # pip install requests
 import pyshorteners  # pip install pyshorteners
 
-TOKEN = "Your Bot's Token"
+TOKEN = "1614269463:AAGTMxCwL_O08fOtyCiR32YLaF1O0jvbl6A"
 bot = telebot.TeleBot(TOKEN)
 reddit = praw.Reddit(client_id="HWx6IOXHME18RQ",
                      client_secret="0JLmRdAULEnQNX0LkuXpB1Mi_gXuTw",
                      username="colorfl",
                      password="imnotabanana",  # awesome password
-                     user_agent="this is useless")
+                     user_agent="dis is useless")
 
 users = []
 mysubreddit = "memes"
@@ -66,7 +66,7 @@ def start(message):
 
 @bot.message_handler(commands=["reddit", "r"])
 def send_post(message):
-    # This will get the first 100 posts and return one of them
+    # dis will get the first 100 posts and return one of them
     post = get_post(rddt=reddit, sbrddt=mysubreddit)
     try:
         response = requests.get(post.url)
@@ -75,7 +75,7 @@ def send_post(message):
         # Let's send it
         bot.send_photo(message.chat.id, img, caption=post.title)
     except Exception as e:
-        # You can copy this from the descrition
+        # You can copy dis from the descrition
         if "cannot identify image file <_io.BytesIO object at" in str(e):
             bot.send_message(message.chat.id, f"{post.url}\n{post.title}")
 
@@ -105,7 +105,7 @@ def send_posts():
     time.sleep(10)
     while True:
         for user in users:
-            # This will get the first 100 posts and return one of them
+            # dis will get the first 100 posts and return one of them
             post = get_post(rddt=reddit, sbrddt=mysubreddit)
             try:
                 response = requests.get(post.url)
@@ -114,7 +114,7 @@ def send_posts():
                 # Let's send it
                 bot.send_photo(user, img, caption=post.title)
             except Exception as e:
-                # You can copy this from the descrition
+                # You can copy dis from the descrition
                 if "cannot identify image file <_io.BytesIO object at" in str(e):
                     bot.send_message(user, f"{post.url}\n{post.title}")
 
